@@ -14,7 +14,11 @@ import {
   Check,
   Minus,
   Feather,
+  Github,
 } from "lucide-react";
+
+const GITHUB_URL = "https://github.com/nguyendangkin/nastenka-novel-edit-app";
+const GITHUB_RELEASES = `${GITHUB_URL}/releases`;
 
 /* ─── DATA ─── */
 
@@ -117,7 +121,18 @@ function Navbar() {
             </a>
           ))}
           <a
-            href="#download"
+            href={GITHUB_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center rounded-lg p-2 text-ash transition-colors hover:text-ink"
+            aria-label="GitHub"
+          >
+            <Github size={20} strokeWidth={1.5} />
+          </a>
+          <a
+            href={GITHUB_RELEASES}
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn-gold inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-ink"
           >
             <Download size={15} />
@@ -147,7 +162,19 @@ function Navbar() {
             </a>
           ))}
           <a
-            href="#download"
+            href={GITHUB_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setOpen(false)}
+            className="flex items-center gap-2 py-3 text-sm text-ash transition-colors hover:text-ink"
+          >
+            <Github size={16} strokeWidth={1.5} />
+            GitHub
+          </a>
+          <a
+            href={GITHUB_RELEASES}
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={() => setOpen(false)}
             className="btn-gold mt-2 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-ink"
           >
@@ -182,7 +209,9 @@ function Hero() {
 
           <div className="mt-8">
             <a
-              href="#download"
+              href={GITHUB_RELEASES}
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn-gold inline-flex items-center gap-2.5 rounded-full px-7 py-3.5 text-sm font-semibold text-ink"
             >
               <Download size={16} />
@@ -347,21 +376,27 @@ function CTAFooter() {
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <a
-              href="#"
+              href={GITHUB_RELEASES}
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn-gold inline-flex items-center gap-2.5 rounded-full px-8 py-4 text-sm font-semibold text-ink"
             >
               <Download size={16} />
               Tải cho Windows
             </a>
             <a
-              href="#"
+              href={GITHUB_RELEASES}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2.5 rounded-full border border-ink/10 px-8 py-4 text-sm font-medium text-ash transition-all hover:border-ink/25 hover:text-ink"
             >
               <Download size={16} />
               Tải cho macOS
             </a>
             <a
-              href="#"
+              href={GITHUB_RELEASES}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2.5 rounded-full border border-ink/10 px-8 py-4 text-sm font-medium text-ash transition-all hover:border-ink/25 hover:text-ink"
             >
               <Download size={16} />
@@ -380,6 +415,16 @@ function CTAFooter() {
           <div className="flex items-center gap-6 text-sm text-ash">
             <a href="#features" className="transition-colors hover:text-ink">Tính năng</a>
             <a href="#comparison" className="transition-colors hover:text-ink">So sánh</a>
+            <a
+              href={GITHUB_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 transition-colors hover:text-ink"
+              aria-label="GitHub"
+            >
+              <Github size={16} strokeWidth={1.5} />
+              GitHub
+            </a>
           </div>
 
           <p className="text-xs text-mist">
