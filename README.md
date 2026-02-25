@@ -22,10 +22,6 @@ Dữ liệu lưu trên máy tính của bạn. Không cần đăng nhập, khôn
 - Windows, macOS & Linux
 - Giao diện tiếng Việt
 
-## Tải xuống
-
-👉 [Trang chủ Nastenka](https://nastenka.vercel.app)
-
 ---
 
 © 2026 Nastenka. All rights reserved.
