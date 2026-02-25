@@ -1,54 +1,32 @@
-# Nastenka — Landing Page
+# Nastenka
 
-Landing page cho [Nastenka](https://github.com/nguyendangkin/nastenka), ứng dụng desktop viết tiểu thuyết.
+Ứng dụng desktop miễn phí dành cho người viết tiểu thuyết.
 
-## Giới thiệu
+## Nastenka là gì?
 
-Nastenka là phần mềm desktop miễn phí giúp bạn viết và sắp xếp tiểu thuyết. Ứng dụng chạy hoàn toàn offline, dữ liệu lưu trên máy tính của bạn.
+Nastenka giúp bạn viết và sắp xếp tiểu thuyết ở một nơi duy nhất. Thay vì phải dùng nhiều công cụ khác nhau — một cái để viết, một cái để ghi chú nhân vật, một cái để vẽ sơ đồ — Nastenka gom tất cả lại trong một ứng dụng.
 
-**Tính năng chính:**
+Dữ liệu lưu trên máy tính của bạn. Không cần đăng nhập, không cần kết nối mạng.
 
-- ✍️ Soạn thảo văn bản với @mention nhân vật, tự động lưu
-- 👥 Quản lý nhân vật — tên, vai trò, tính cách, tiểu sử
-- 🔗 Sơ đồ quan hệ nhân vật trực quan
-- 🗺️ Dàn cốt truyện theo cấu trúc 3 hồi
-- 📖 Wiki nội bộ — địa điểm, sự kiện, phong tục
-- 🔒 Offline & riêng tư — không cần đăng nhập, không cần mạng
+## Tính năng
 
-## Tech Stack
+- **Soạn thảo văn bản** — Editor với @mention nhân vật, tự động lưu khi viết
+- **Quản lý nhân vật** — Ghi chú tên, vai trò, tính cách, tiểu sử ở một nơi
+- **Sơ đồ quan hệ** — Vẽ mối quan hệ giữa các nhân vật, phân loại theo màu
+- **Dàn cốt truyện** — Sắp xếp cốt truyện theo cấu trúc 3 hồi, kéo thả các điểm nhấn
+- **Wiki nội bộ** — Ghi chú về thế giới tiểu thuyết: địa điểm, sự kiện, phong tục
+- **Xuất file** — Xuất bản thảo ra DOCX khi viết xong
 
-- [Next.js](https://nextjs.org/) 16
-- [React](https://react.dev/) 19
-- [Tailwind CSS](https://tailwindcss.com/) 4
-- [Lucide Icons](https://lucide.dev/)
-- TypeScript
+## Hỗ trợ
 
-## Chạy local
+- Windows, macOS & Linux
+- Giao diện tiếng Việt
+- Miễn phí, mã nguồn mở
 
-```bash
-npm install
-npm run dev
-```
+## Tải xuống
 
-Mở [http://localhost:3000](http://localhost:3000) trên trình duyệt.
+👉 [Trang chủ Nastenka](https://nastenka.vercel.app)
 
-## Build
-
-```bash
-npm run build
-npm start
-```
-
-## Cấu trúc
-
-```
-app/
-├── globals.css    # Design system & styles
-├── icon.svg       # Favicon (chữ N)
-├── layout.tsx     # Root layout, fonts, metadata
-└── page.tsx       # Toàn bộ landing page
-```
-
-## License
+---
 
 © 2026 Nastenka. All rights reserved.
