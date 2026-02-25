@@ -21,7 +21,6 @@ Dữ liệu lưu trên máy tính của bạn. Không cần đăng nhập, khôn
 
 - Windows, macOS & Linux
 - Giao diện tiếng Việt
-- Miễn phí, mã nguồn mở
 
 ## Tải xuống
 
