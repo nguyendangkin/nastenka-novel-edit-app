@@ -15,6 +15,8 @@ import {
   Minus,
   Feather,
   Github,
+  Keyboard,
+  Zap,
 } from "lucide-react";
 
 const GITHUB_URL = "https://github.com/nguyendangkin/nastenka-novel-edit-app";
@@ -24,8 +26,82 @@ const GITHUB_RELEASES = `${GITHUB_URL}/releases`;
 
 const NAV_LINKS = [
   { label: "Tính năng", href: "#features" },
+  { label: "Ảnh minh họa", href: "#screenshots" },
   { label: "Cách dùng", href: "#how-it-works" },
   { label: "So sánh", href: "#comparison" },
+];
+
+const SCREENSHOTS = [
+  {
+    id: "home",
+    label: "Màn hình chính",
+    src: "/1screenshot.png",
+    alt: "Màn hình chính — danh sách dự án",
+    caption: "Màn hình chính — quản lý nhiều dự án tiểu thuyết, tạo mới hoặc khôi phục bản lưu.",
+  },
+  {
+    id: "editor",
+    label: "Soạn thảo",
+    src: "/2screenshot.png",
+    alt: "Màn hình soạn thảo có sidebar chi tiết cảnh",
+    caption: "Editor với sidebar chi tiết cảnh — nhân vật, địa điểm, thời gian và điểm nhớ.",
+  },
+  {
+    id: "timeline",
+    label: "Dòng thời gian",
+    src: "/3screenshot.png",
+    alt: "Dòng thời gian cốt truyện",
+    caption: "Tab Dòng thời gian — xem toàn bộ các cảnh theo trình tự với điểm nhớ đính kèm.",
+  },
+  {
+    id: "characters",
+    label: "Nhân vật",
+    src: "/4screenshot.png",
+    alt: "Quản lý nhân vật",
+    caption: "Thẻ nhân vật đầy đủ — tính cách, tiểu sử, ghi chú — tất cả trong một màn hình.",
+  },
+  {
+    id: "relations",
+    label: "Sơ đồ quan hệ",
+    src: "/5screenshot.png",
+    alt: "Sơ đồ quan hệ nhân vật",
+    caption: "Sơ đồ quan hệ trực quan — kéo thả, phân màu theo mối quan hệ.",
+  },
+  {
+    id: "plot",
+    label: "Cốt truyện 3 hồi",
+    src: "/6screenshot.png",
+    alt: "Cấu trúc ba hồi",
+    caption: "Cấu trúc ba hồi — sắp xếp điểm nhấn theo tiến trình câu chuyện.",
+  },
+  {
+    id: "wiki",
+    label: "Bách khoa",
+    src: "/7screenshot.png",
+    alt: "Bách khoa thế giới nội bộ",
+    caption: "Bách khoa nội bộ — ghi chú về dòng họ, hệ thống ma thuật, vật phẩm trong thế giới.",
+  },
+  {
+    id: "notes",
+    label: "Ghi chú",
+    src: "/8screenshot.png",
+    alt: "Ghi chú wiki",
+    caption: "Ghi chú tự do — TODO, soundtrack, ý tưởng kết thúc — lưu bên cạnh bản thảo.",
+  },
+  {
+    id: "focus",
+    label: "Chế độ tập trung",
+    src: "/9screenshot.png",
+    alt: "Chế độ tập trung toàn màn hình",
+    caption: "Chế độ tập trung toàn màn hình — ẩn mọi thứ, chỉ còn trang viết.",
+  },
+  {
+    id: "insert",
+    label: "Chèn nhân vật",
+    src: "/10screenshot.png",
+    alt: "Popup chèn nhân vật nhanh Ctrl+Space",
+    caption: "Nhấn Ctrl + Space để mở popup tìm và chèn tên nhân vật ngay tại vị trí con trỏ.",
+  },
 ];
 
 const FEATURES = [
@@ -232,6 +308,54 @@ function Hero() {
   );
 }
 
+function Screenshots() {
+  const [active, setActive] = useState(SCREENSHOTS[0].id);
+  const current = SCREENSHOTS.find((s) => s.id === active)!;
+
+  return (
+    <section id="screenshots" className="py-24 md:py-32 bg-ink">
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="mb-12 text-center">
+          <h2 className="font-display text-4xl font-light tracking-tight text-ivory md:text-5xl">
+            Nhìn thực tế
+          </h2>
+          <p className="mx-auto mt-4 max-w-lg text-base text-mist/70">
+            Giao diện sạch sẽ, tập trung vào nội dung — không quảng cáo, không phân tâm.
+          </p>
+        </div>
+
+        {/* Tab buttons */}
+        <div className="mb-6 flex flex-wrap justify-center gap-2">
+          {SCREENSHOTS.map((s) => (
+            <button
+              key={s.id}
+              onClick={() => setActive(s.id)}
+              className={`rounded-full px-4 py-2 text-sm font-medium transition-all ${active === s.id
+                ? "bg-gold text-ink"
+                : "border border-white/10 text-mist/60 hover:border-white/20 hover:text-mist"
+                }`}
+            >
+              {s.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Screenshot image */}
+        <div className="overflow-hidden rounded-2xl border border-white/8 shadow-2xl">
+          <img
+            src={current.src}
+            alt={current.alt}
+            className="w-full h-auto transition-opacity duration-200"
+          />
+        </div>
+
+        {/* Caption */}
+        <p className="mt-5 text-center text-sm text-mist/60">{current.caption}</p>
+      </div>
+    </section>
+  );
+}
+
 function Features() {
   return (
     <section id="features" className="py-24 md:py-32">
@@ -259,6 +383,72 @@ function Features() {
               <p className="mt-2 text-sm leading-relaxed text-ash">{f.desc}</p>
             </div>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function TipHighlights() {
+  return (
+    <section className="py-24 md:py-32 bg-ivory/40">
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="mb-16 text-center">
+          <h2 className="font-display text-4xl font-light tracking-tight text-ink md:text-5xl">
+            Mẹo hữu ích
+          </h2>
+          <p className="mx-auto mt-4 max-w-lg text-base text-ash">
+            Những phím tắt và thao tác nhanh giúp bạn viết trơn tru hơn.
+          </p>
+        </div>
+
+        <div className="grid gap-8 md:grid-cols-2">
+          {/* Tip 1: Ctrl+Space */}
+          <div className="rounded-2xl border border-ink/8 bg-white/70 p-8 shadow-sm">
+            <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gold-dim text-gold">
+              <Keyboard size={22} strokeWidth={1.5} />
+            </div>
+            <h3 className="font-display text-2xl font-semibold text-ink">
+              Chèn nhân vật nhanh
+            </h3>
+            <div className="mt-2 mb-4 inline-flex items-center gap-2 rounded-lg bg-gold-dim px-3 py-1.5">
+              <kbd className="font-mono text-xs font-semibold text-gold">Ctrl</kbd>
+              <span className="text-gold/50 text-xs">+</span>
+              <kbd className="font-mono text-xs font-semibold text-gold">Space</kbd>
+            </div>
+            <p className="text-sm leading-relaxed text-ash">
+              Khi đang viết, nhấn <strong className="text-ink">Ctrl + Space</strong> để mở cửa sổ tìm kiếm nhân vật.
+              Gõ tên để lọc, dùng <kbd className="font-mono text-xs bg-ink/5 px-1 py-0.5 rounded">↑↓</kbd> để chọn,
+              nhấn <kbd className="font-mono text-xs bg-ink/5 px-1 py-0.5 rounded">Enter</kbd> để chèn tên vào đúng vị trí con trỏ.
+            </p>
+            <p className="mt-3 text-sm leading-relaxed text-ash">
+              Nếu nhân vật có tên dài (nhiều từ), nhấn{" "}
+              <kbd className="font-mono text-xs bg-ink/5 px-1 py-0.5 rounded">Tab</kbd>{" "}
+              để chọn chèn từng từ riêng lẻ thay vì toàn bộ tên.
+            </p>
+          </div>
+
+          {/* Tip 2: Điểm nhớ */}
+          <div className="rounded-2xl border border-ink/8 bg-white/70 p-8 shadow-sm">
+            <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gold-dim text-gold">
+              <Zap size={22} strokeWidth={1.5} />
+            </div>
+            <h3 className="font-display text-2xl font-semibold text-ink">
+              Nạp điểm nhớ
+            </h3>
+            <div className="mt-2 mb-4 inline-flex items-center gap-2 rounded-lg bg-gold-dim px-3 py-1.5">
+              <span className="text-xs font-semibold text-gold">Bôi chọn + Chuột phải</span>
+            </div>
+            <p className="text-sm leading-relaxed text-ash">
+              Bôi chọn một đoạn văn bất kỳ — một chi tiết quan trọng, một sự kiện, một đặc điểm nhân vật —
+              sau đó <strong className="text-ink">chuột phải</strong> và chọn{" "}
+              <strong className="text-ink">&quot;Thêm điểm nhớ&quot;</strong>.
+            </p>
+            <p className="mt-3 text-sm leading-relaxed text-ash">
+              Đoạn văn sẽ được lưu làm điểm nhớ của cảnh, giúp bạn tra cứu lại các chi tiết quan trọng
+              mà không cần cuộn lại toàn bộ nội dung.
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -444,7 +634,9 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+        <Screenshots />
         <Features />
+        <TipHighlights />
         <HowItWorks />
         <Comparison />
         <CTAFooter />
