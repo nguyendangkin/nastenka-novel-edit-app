@@ -11,8 +11,6 @@ import {
   Download,
   Menu,
   X,
-  Check,
-  Minus,
   Feather,
   Github,
   Keyboard,
@@ -20,159 +18,146 @@ import {
 } from "lucide-react";
 
 const GITHUB_URL = "https://github.com/nguyendangkin/nastenka-novel-edit-app";
-const GITHUB_RELEASES = `${GITHUB_URL}/releases`;
+const GUMROAD_URL = "https://nguyendangkin.gumroad.com/l/nastenka";
 
 /* ─── DATA ─── */
 
 const NAV_LINKS = [
-  { label: "Tính năng", href: "#features" },
-  { label: "Ảnh minh họa", href: "#screenshots" },
-  { label: "Cách dùng", href: "#how-it-works" },
-  { label: "So sánh", href: "#comparison" },
+  { label: "Features", href: "#features" },
+  { label: "Screenshots", href: "#screenshots" },
+  { label: "How It Works", href: "#how-it-works" },
 ];
 
 const SCREENSHOTS = [
   {
     id: "home",
-    label: "Màn hình chính",
+    label: "Home Screen",
     src: "/1screenshot.png",
-    alt: "Màn hình chính — danh sách dự án",
-    caption: "Màn hình chính — quản lý nhiều dự án tiểu thuyết, tạo mới hoặc khôi phục bản lưu.",
+    alt: "Home screen — project list",
+    caption: "Home screen — manage multiple novel projects, create new ones, or restore saved backups.",
   },
   {
     id: "editor",
-    label: "Soạn thảo",
+    label: "Editor",
     src: "/2screenshot.png",
-    alt: "Màn hình soạn thảo có sidebar chi tiết cảnh",
-    caption: "Editor với sidebar chi tiết cảnh — nhân vật, địa điểm, thời gian và điểm nhớ.",
+    alt: "Editor screen with scene detail sidebar",
+    caption: "Editor with scene detail sidebar — characters, locations, time, and memory points.",
   },
   {
     id: "timeline",
-    label: "Dòng thời gian",
+    label: "Timeline",
     src: "/3screenshot.png",
-    alt: "Dòng thời gian cốt truyện",
-    caption: "Tab Dòng thời gian — xem toàn bộ các cảnh theo trình tự với điểm nhớ đính kèm.",
+    alt: "Story timeline",
+    caption: "Timeline tab — view all scenes in sequence with attached memory points.",
   },
   {
     id: "characters",
-    label: "Nhân vật",
+    label: "Characters",
     src: "/4screenshot.png",
-    alt: "Quản lý nhân vật",
-    caption: "Thẻ nhân vật đầy đủ — tính cách, tiểu sử, ghi chú — tất cả trong một màn hình.",
+    alt: "Character management",
+    caption: "Full character cards — personality, biography, notes — all in one view.",
   },
   {
     id: "relations",
-    label: "Sơ đồ quan hệ",
+    label: "Relationship Map",
     src: "/5screenshot.png",
-    alt: "Sơ đồ quan hệ nhân vật",
-    caption: "Sơ đồ quan hệ trực quan — kéo thả, phân màu theo mối quan hệ.",
+    alt: "Character relationship map",
+    caption: "Visual relationship map — drag & drop, color-coded by relationship type.",
   },
   {
     id: "plot",
-    label: "Cốt truyện 3 hồi",
+    label: "3-Act Structure",
     src: "/6screenshot.png",
-    alt: "Cấu trúc ba hồi",
-    caption: "Cấu trúc ba hồi — sắp xếp điểm nhấn theo tiến trình câu chuyện.",
+    alt: "Three-act structure",
+    caption: "Three-act structure — arrange plot points along the story progression.",
   },
   {
     id: "wiki",
-    label: "Bách khoa",
+    label: "World Wiki",
     src: "/7screenshot.png",
-    alt: "Bách khoa thế giới nội bộ",
-    caption: "Bách khoa nội bộ — ghi chú về dòng họ, hệ thống ma thuật, vật phẩm trong thế giới.",
+    alt: "Internal world encyclopedia",
+    caption: "Internal wiki — notes on lineages, magic systems, artifacts within your world.",
   },
   {
     id: "notes",
-    label: "Ghi chú",
+    label: "Notes",
     src: "/8screenshot.png",
-    alt: "Ghi chú wiki",
-    caption: "Ghi chú tự do — TODO, soundtrack, ý tưởng kết thúc — lưu bên cạnh bản thảo.",
+    alt: "Wiki notes",
+    caption: "Free-form notes — TODOs, soundtracks, ending ideas — saved alongside your manuscript.",
   },
   {
     id: "focus",
-    label: "Chế độ tập trung",
+    label: "Focus Mode",
     src: "/9screenshot.png",
-    alt: "Chế độ tập trung toàn màn hình",
-    caption: "Chế độ tập trung toàn màn hình — ẩn mọi thứ, chỉ còn trang viết.",
+    alt: "Full-screen focus mode",
+    caption: "Full-screen focus mode — hide everything, just your writing page.",
   },
   {
     id: "insert",
-    label: "Chèn nhân vật",
+    label: "Insert Character",
     src: "/10screenshot.png",
-    alt: "Popup chèn nhân vật nhanh Ctrl+Space",
-    caption: "Nhấn Ctrl + Space để mở popup tìm và chèn tên nhân vật ngay tại vị trí con trỏ.",
+    alt: "Quick character insert popup Ctrl+Space",
+    caption: "Press Ctrl + Space to open a character search popup and insert a name at the cursor position.",
   },
 ];
 
 const FEATURES = [
   {
     icon: PenLine,
-    title: "Soạn thảo văn bản",
-    desc: "Editor với toolbar cơ bản, @mention nhân vật, tự động lưu khi viết.",
+    title: "Text Editor",
+    desc: "Editor with a basic toolbar, @mention characters, and auto-save while writing.",
   },
   {
     icon: Users,
-    title: "Quản lý nhân vật",
-    desc: "Ghi chú thông tin nhân vật — tên, vai trò, tính cách, tiểu sử — ở một nơi duy nhất.",
+    title: "Character Management",
+    desc: "Record character information — name, role, personality, biography — all in one place.",
   },
   {
     icon: GitFork,
-    title: "Sơ đồ quan hệ",
-    desc: "Vẽ mối quan hệ giữa các nhân vật trên sơ đồ trực quan, phân loại theo màu.",
+    title: "Relationship Map",
+    desc: "Draw relationships between characters on a visual map, color-coded by type.",
   },
   {
     icon: Map,
-    title: "Dàn cốt truyện",
-    desc: "Sắp xếp cốt truyện theo cấu trúc 3 hồi. Kéo thả các điểm nhấn giữa các hồi.",
+    title: "Plot Outline",
+    desc: "Organize your plot with a 3-act structure. Drag & drop plot points between acts.",
   },
   {
     icon: BookOpen,
-    title: "Wiki nội bộ",
-    desc: "Ghi chú về thế giới tiểu thuyết — địa điểm, sự kiện, phong tục — liên kết chéo với nhau.",
+    title: "Internal Wiki",
+    desc: "Notes about your novel's world — locations, events, customs — cross-linked together.",
   },
   {
     icon: ShieldCheck,
-    title: "Offline & riêng tư",
-    desc: "Dữ liệu lưu trên máy tính của bạn. Không cần đăng nhập, không cần kết nối mạng.",
+    title: "Offline & Private",
+    desc: "Data is stored on your computer. No login required, no internet connection needed.",
   },
 ];
 
 const WORKFLOW_STEPS = [
   {
     step: "01",
-    title: "Tạo dự án",
-    desc: "Đặt tên cho tiểu thuyết, chọn thể loại, viết vài dòng mô tả. Dữ liệu được lưu vào một file trên máy tính của bạn.",
+    title: "Create a Project",
+    desc: "Name your novel, pick a genre, write a short description. Data is saved to a file on your computer.",
   },
   {
     step: "02",
-    title: "Viết và sắp xếp",
-    desc: "Chia bản thảo thành các chương và cảnh. Viết trực tiếp trong editor, nội dung được lưu tự động.",
+    title: "Write & Organize",
+    desc: "Split your manuscript into chapters and scenes. Write directly in the editor with auto-save.",
   },
   {
     step: "03",
-    title: "Xây dựng thế giới",
-    desc: "Tạo thẻ nhân vật, ghi chú địa điểm, vẽ sơ đồ quan hệ, dàn cốt truyện — tất cả gắn với bản thảo.",
+    title: "Build Your World",
+    desc: "Create character cards, location notes, relationship maps, plot outlines — all linked to your manuscript.",
   },
   {
     step: "04",
-    title: "Xuất bản thảo",
-    desc: "Khi viết xong, xuất toàn bộ bản thảo ra file DOCX để gửi cho nhà xuất bản hoặc in ấn.",
+    title: "Export Your Manuscript",
+    desc: "When finished, export your entire manuscript to a DOCX file for publishers or printing.",
   },
 ];
 
-const COMPARISON = {
-  headers: ["", "Nastenka", "Scrivener", "Google Docs", "Notion"],
-  rows: [
-    { feature: "Viết dài (tiểu thuyết)", values: [true, true, "partial", false] },
-    { feature: "Ghi chú nhân vật", values: [true, false, false, "partial"] },
-    { feature: "Sơ đồ quan hệ", values: [true, false, false, false] },
-    { feature: "Dàn cốt truyện", values: [true, "partial", false, false] },
-    { feature: "Wiki nội bộ", values: [true, false, false, "partial"] },
-    { feature: "Chạy offline", values: [true, true, false, false] },
-    { feature: "Miễn phí", values: [true, false, true, "partial"] },
-    { feature: "Giao diện tiếng Việt", values: [true, false, true, true] },
-  ],
-};
+
 
 /* ─── COMPONENTS ─── */
 
@@ -206,13 +191,13 @@ function Navbar() {
             <Github size={20} strokeWidth={1.5} />
           </a>
           <a
-            href={GITHUB_RELEASES}
+            href={GUMROAD_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-gold inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-ink"
           >
             <Download size={15} />
-            Tải xuống
+            Get Nastenka
           </a>
         </div>
 
@@ -248,14 +233,14 @@ function Navbar() {
             GitHub
           </a>
           <a
-            href={GITHUB_RELEASES}
+            href={GUMROAD_URL}
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setOpen(false)}
             className="btn-gold mt-2 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-ink"
           >
             <Download size={15} />
-            Tải xuống
+            Get Nastenka
           </a>
         </div>
       )}
@@ -273,34 +258,32 @@ function Hero() {
       <div className="mx-auto max-w-3xl px-6 text-center">
         <div className="animate-fade-up">
           <h1 className="font-display text-5xl leading-[1.1] font-light tracking-tight text-ink md:text-6xl lg:text-7xl">
-            Một ứng dụng
+            One app
             <br />
-            <span className="font-medium italic">để viết tiểu thuyết.</span>
+            <span className="font-medium italic">to write your novel.</span>
           </h1>
 
           <p className="mx-auto mt-6 max-w-md text-lg leading-relaxed text-ash">
-            Nastenka là ứng dụng desktop giúp bạn viết và sắp xếp tiểu thuyết.
-            Quản lý nhân vật, cốt truyện, thế giới quan — tất cả offline, trên máy tính của bạn.
+            Nastenka is a desktop app that helps you write and organize your novel.
+            Manage characters, plot, world‑building — all offline, on your computer.
           </p>
 
           <div className="mt-8">
             <a
-              href={GITHUB_RELEASES}
+              href={GUMROAD_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-gold inline-flex items-center gap-2.5 rounded-full px-7 py-3.5 text-sm font-semibold text-ink"
             >
               <Download size={16} />
-              Tải xuống miễn phí
+              Get Nastenka
             </a>
           </div>
 
           <div className="mt-10 inline-flex gap-8 border-t border-ink/8 pt-7 text-sm text-ash">
-            <span>Windows, macOS & Linux</span>
+            <span>Windows 64-bit</span>
             <span>·</span>
-            <span>Miễn phí</span>
-            <span>·</span>
-            <span>Tiếng Việt</span>
+            <span>Offline & Private</span>
           </div>
         </div>
       </div>
@@ -317,10 +300,10 @@ function Screenshots() {
       <div className="mx-auto max-w-6xl px-6">
         <div className="mb-12 text-center">
           <h2 className="font-display text-4xl font-light tracking-tight text-ivory md:text-5xl">
-            Nhìn thực tế
+            See It in Action
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-base text-mist/70">
-            Giao diện sạch sẽ, tập trung vào nội dung — không quảng cáo, không phân tâm.
+            A clean interface focused on content — no ads, no distractions.
           </p>
         </div>
 
@@ -362,10 +345,10 @@ function Features() {
       <div className="mx-auto max-w-6xl px-6">
         <div className="mb-16 text-center">
           <h2 className="font-display text-4xl font-light tracking-tight text-ink md:text-5xl">
-            Tính năng chính
+            Key Features
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-base text-ash">
-            Những công cụ cơ bản dành cho người viết tiểu thuyết.
+            Essential tools built for novel writers.
           </p>
         </div>
 
@@ -395,10 +378,10 @@ function TipHighlights() {
       <div className="mx-auto max-w-6xl px-6">
         <div className="mb-16 text-center">
           <h2 className="font-display text-4xl font-light tracking-tight text-ink md:text-5xl">
-            Mẹo hữu ích
+            Helpful Tips
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-base text-ash">
-            Những phím tắt và thao tác nhanh giúp bạn viết trơn tru hơn.
+            Keyboard shortcuts and quick actions to help you write more smoothly.
           </p>
         </div>
 
@@ -409,7 +392,7 @@ function TipHighlights() {
               <Keyboard size={22} strokeWidth={1.5} />
             </div>
             <h3 className="font-display text-2xl font-semibold text-ink">
-              Chèn nhân vật nhanh
+              Quick Character Insert
             </h3>
             <div className="mt-2 mb-4 inline-flex items-center gap-2 rounded-lg bg-gold-dim px-3 py-1.5">
               <kbd className="font-mono text-xs font-semibold text-gold">Ctrl</kbd>
@@ -417,36 +400,36 @@ function TipHighlights() {
               <kbd className="font-mono text-xs font-semibold text-gold">Space</kbd>
             </div>
             <p className="text-sm leading-relaxed text-ash">
-              Khi đang viết, nhấn <strong className="text-ink">Ctrl + Space</strong> để mở cửa sổ tìm kiếm nhân vật.
-              Gõ tên để lọc, dùng <kbd className="font-mono text-xs bg-ink/5 px-1 py-0.5 rounded">↑↓</kbd> để chọn,
-              nhấn <kbd className="font-mono text-xs bg-ink/5 px-1 py-0.5 rounded">Enter</kbd> để chèn tên vào đúng vị trí con trỏ.
+              While writing, press <strong className="text-ink">Ctrl + Space</strong> to open the character search popup.
+              Type a name to filter, use <kbd className="font-mono text-xs bg-ink/5 px-1 py-0.5 rounded">↑↓</kbd> to navigate,
+              and press <kbd className="font-mono text-xs bg-ink/5 px-1 py-0.5 rounded">Enter</kbd> to insert the name at the cursor position.
             </p>
             <p className="mt-3 text-sm leading-relaxed text-ash">
-              Nếu nhân vật có tên dài (nhiều từ), nhấn{" "}
+              If the character has a long name (multiple words), press{" "}
               <kbd className="font-mono text-xs bg-ink/5 px-1 py-0.5 rounded">Tab</kbd>{" "}
-              để chọn chèn từng từ riêng lẻ thay vì toàn bộ tên.
+              to insert individual words instead of the full name.
             </p>
           </div>
 
-          {/* Tip 2: Điểm nhớ */}
+          {/* Tip 2: Memory Points */}
           <div className="rounded-2xl border border-ink/8 bg-white/70 p-8 shadow-sm">
             <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gold-dim text-gold">
               <Zap size={22} strokeWidth={1.5} />
             </div>
             <h3 className="font-display text-2xl font-semibold text-ink">
-              Nạp điểm nhớ
+              Create Memory Points
             </h3>
             <div className="mt-2 mb-4 inline-flex items-center gap-2 rounded-lg bg-gold-dim px-3 py-1.5">
-              <span className="text-xs font-semibold text-gold">Bôi chọn + Chuột phải</span>
+              <span className="text-xs font-semibold text-gold">Select + Right‑click</span>
             </div>
             <p className="text-sm leading-relaxed text-ash">
-              Bôi chọn một đoạn văn bất kỳ — một chi tiết quan trọng, một sự kiện, một đặc điểm nhân vật —
-              sau đó <strong className="text-ink">chuột phải</strong> và chọn{" "}
-              <strong className="text-ink">&quot;Thêm điểm nhớ&quot;</strong>.
+              Highlight any passage — an important detail, an event, a character trait —
+              then <strong className="text-ink">right‑click</strong> and choose{" "}
+              <strong className="text-ink">&quot;Add Memory Point&quot;</strong>.
             </p>
             <p className="mt-3 text-sm leading-relaxed text-ash">
-              Đoạn văn sẽ được lưu làm điểm nhớ của cảnh, giúp bạn tra cứu lại các chi tiết quan trọng
-              mà không cần cuộn lại toàn bộ nội dung.
+              The passage will be saved as a memory point for the scene, letting you look up key details
+              without scrolling through the entire content.
             </p>
           </div>
         </div>
@@ -461,10 +444,10 @@ function HowItWorks() {
       <div className="mx-auto max-w-4xl px-6">
         <div className="mb-16 text-center">
           <h2 className="font-display text-4xl font-light tracking-tight text-ivory md:text-5xl">
-            Cách sử dụng
+            How It Works
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-base text-mist/70">
-            Bốn bước cơ bản để bắt đầu viết với Nastenka.
+            Four simple steps to start writing with Nastenka.
           </p>
         </div>
 
@@ -491,64 +474,6 @@ function HowItWorks() {
   );
 }
 
-function ComparisonCell({ value }: { value: boolean | string }) {
-  if (value === true) return <Check size={16} className="mx-auto text-gold" />;
-  if (value === false) return <Minus size={14} className="mx-auto text-mist/30" />;
-  return <span className="text-xs text-mist">Một phần</span>;
-}
-
-function Comparison() {
-  return (
-    <section id="comparison" className="py-24 md:py-32">
-      <div className="mx-auto max-w-4xl px-6">
-        <div className="mb-16 text-center">
-          <h2 className="font-display text-4xl font-light tracking-tight text-ink md:text-5xl">
-            So sánh nhanh
-          </h2>
-          <p className="mx-auto mt-4 max-w-lg text-base text-ash">
-            Nastenka so với một số công cụ viết phổ biến khác.
-          </p>
-        </div>
-
-        <div className="overflow-x-auto rounded-2xl border border-ink/5 bg-ivory/60">
-          <table className="w-full text-sm">
-            <thead>
-              <tr className="border-b border-ink/5">
-                {COMPARISON.headers.map((h, i) => (
-                  <th
-                    key={h || "feature"}
-                    className={`px-5 py-4 text-left font-display text-base font-semibold ${i === 1
-                      ? "comparison-highlight text-gold"
-                      : "text-ash"
-                      }`}
-                  >
-                    {i === 1 && <Feather size={14} className="inline mr-1.5 -mt-0.5" />}
-                    {h}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {COMPARISON.rows.map((row) => (
-                <tr key={row.feature} className="border-b border-ink/3 last:border-0">
-                  <td className="px-5 py-3.5 text-left text-ash font-medium">{row.feature}</td>
-                  {row.values.map((v, i) => (
-                    <td
-                      key={i}
-                      className={`px-5 py-3.5 text-center ${i === 0 ? "comparison-highlight" : ""}`}
-                    >
-                      <ComparisonCell value={v} />
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-  );
-}
 
 function CTAFooter() {
   return (
@@ -559,38 +484,20 @@ function CTAFooter() {
             <Feather size={24} strokeWidth={1.5} />
           </div>
           <h2 className="font-display text-4xl font-light tracking-tight text-ink md:text-5xl">
-            Thử dùng Nastenka
+            Get Nastenka
           </h2>
           <p className="mx-auto mt-5 max-w-md text-base text-ash">
-            Tải về và dùng thử. Miễn phí, không cần đăng ký tài khoản.
+            Purchase and download instantly. Available for Windows 64-bit.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <a
-              href={GITHUB_RELEASES}
+              href={GUMROAD_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-gold inline-flex items-center gap-2.5 rounded-full px-8 py-4 text-sm font-semibold text-ink"
             >
               <Download size={16} />
-              Tải cho Windows
-            </a>
-            <a
-              href={GITHUB_RELEASES}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 rounded-full border border-ink/10 px-8 py-4 text-sm font-medium text-ash transition-all hover:border-ink/25 hover:text-ink"
-            >
-              <Download size={16} />
-              Tải cho macOS
-            </a>
-            <a
-              href={GITHUB_RELEASES}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 rounded-full border border-ink/10 px-8 py-4 text-sm font-medium text-ash transition-all hover:border-ink/25 hover:text-ink"
-            >
-              <Download size={16} />
-              Tải cho Linux
+              Buy Now
             </a>
           </div>
         </div>
@@ -603,8 +510,7 @@ function CTAFooter() {
           </span>
 
           <div className="flex items-center gap-6 text-sm text-ash">
-            <a href="#features" className="transition-colors hover:text-ink">Tính năng</a>
-            <a href="#comparison" className="transition-colors hover:text-ink">So sánh</a>
+            <a href="#features" className="transition-colors hover:text-ink">Features</a>
             <a
               href={GITHUB_URL}
               target="_blank"
@@ -638,7 +544,7 @@ export default function Home() {
         <Features />
         <TipHighlights />
         <HowItWorks />
-        <Comparison />
+
         <CTAFooter />
       </main>
     </>

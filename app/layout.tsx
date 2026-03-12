@@ -17,22 +17,22 @@ const baskerville = Libre_Baskerville({
 });
 
 export const metadata: Metadata = {
-  title: "Nastenka — Phần mềm viết tiểu thuyết",
+  title: "Nastenka — Novel Writing Software",
   description:
-    "Viết tiểu thuyết chuyên nghiệp, local-first. Quản lý nhân vật, cốt truyện, quan hệ — tất cả trong một ứng dụng desktop miễn phí.",
+    "Write novels like a pro, local-first. Manage characters, plot, relationships — all in one desktop app.",
   keywords: [
-    "viết tiểu thuyết",
-    "phần mềm viết sách",
     "novel writing",
-    "Nastenka",
+    "writing software",
     "creative writing",
+    "Nastenka",
+    "book writing app",
   ],
   openGraph: {
-    title: "Nastenka — Phần mềm viết tiểu thuyết",
+    title: "Nastenka — Novel Writing Software",
     description:
-      "Viết tiểu thuyết chuyên nghiệp, local-first. Quản lý nhân vật, cốt truyện, quan hệ — tất cả offline, miễn phí.",
+      "Write novels like a pro, local-first. Manage characters, plot, relationships — all offline.",
     type: "website",
-    locale: "vi_VN",
+    locale: "en_US",
   },
 };
 
@@ -42,7 +42,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="vi" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth">
       <body
         className={`${cormorant.variable} ${baskerville.variable} antialiased`}
       >

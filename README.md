@@ -1,26 +1,30 @@
 # Nastenka
 
-Ứng dụng desktop miễn phí dành cho người viết tiểu thuyết.
+A desktop application for novel writers.
 
-## Nastenka là gì?
+## What is Nastenka?
 
-Nastenka giúp bạn viết và sắp xếp tiểu thuyết ở một nơi duy nhất. Thay vì phải dùng nhiều công cụ khác nhau — một cái để viết, một cái để ghi chú nhân vật, một cái để vẽ sơ đồ — Nastenka gom tất cả lại trong một ứng dụng.
+Nastenka helps you write and organize your novel in one place. Instead of juggling multiple tools — one for writing, one for character notes, one for diagrams — Nastenka brings everything together in a single app.
 
-Dữ liệu lưu trên máy tính của bạn. Không cần đăng nhập, không cần kết nối mạng.
+Data is stored on your computer. No login required, no internet connection needed.
 
-## Tính năng
+## Features
 
-- **Soạn thảo văn bản** — Editor với @mention nhân vật, tự động lưu khi viết
-- **Quản lý nhân vật** — Ghi chú tên, vai trò, tính cách, tiểu sử ở một nơi
-- **Sơ đồ quan hệ** — Vẽ mối quan hệ giữa các nhân vật, phân loại theo màu
-- **Dàn cốt truyện** — Sắp xếp cốt truyện theo cấu trúc 3 hồi, kéo thả các điểm nhấn
-- **Wiki nội bộ** — Ghi chú về thế giới tiểu thuyết: địa điểm, sự kiện, phong tục
-- **Xuất file** — Xuất bản thảo ra DOCX khi viết xong
+- **Text Editor** — Editor with @mention characters and auto-save while writing
+- **Character Management** — Record name, role, personality, and biography in one place
+- **Relationship Map** — Draw relationships between characters, color-coded by type
+- **Plot Outline** — Organize your plot with a 3-act structure, drag & drop plot points
+- **Internal Wiki** — Notes about your novel's world: locations, events, customs
+- **Export** — Export your manuscript to DOCX when finished
 
-## Hỗ trợ
+## Platform
 
-- Windows, macOS & Linux
-- Giao diện tiếng Việt
+- Windows 64-bit
+
+## Links
+
+- [Buy Nastenka](https://nguyendangkin.gumroad.com/l/nastenka)
+- [GitHub](https://github.com/nguyendangkin/nastenka-novel-edit-app)
 
 ---
 
