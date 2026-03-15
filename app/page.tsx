@@ -290,7 +290,7 @@ function Screenshots() {
           {/* Slides container */}
           <div
             ref={scrollRef}
-            className="carousel-track flex overflow-x-auto flex-nowrap rounded-2xl border border-white/8 shadow-2xl"
+            className="carousel-track flex overflow-x-auto flex-nowrap border border-white/8 shadow-2xl"
           >
             {SCREENSHOTS.map((s, i) => (
               <div key={i} className="carousel-slide flex-none w-full min-w-full">
