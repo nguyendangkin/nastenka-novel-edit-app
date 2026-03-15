@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import {
   PenLine,
   Users,
@@ -14,6 +14,8 @@ import {
   Feather,
   Keyboard,
   Zap,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 
 const GUMROAD_URL = "https://nguyendangkin.gumroad.com/l/nastenka";
@@ -27,76 +29,17 @@ const NAV_LINKS = [
 ];
 
 const SCREENSHOTS = [
-  {
-    id: "home",
-    label: "Home Screen",
-    src: "/1screenshot.png",
-    alt: "Home screen — project list",
-    caption: "Home screen — manage multiple novel projects, create new ones, or restore saved backups.",
-  },
-  {
-    id: "editor",
-    label: "Editor",
-    src: "/2screenshot.png",
-    alt: "Editor screen with scene detail sidebar",
-    caption: "Editor with scene detail sidebar — characters, locations, time, and memory points.",
-  },
-  {
-    id: "timeline",
-    label: "Timeline",
-    src: "/3screenshot.png",
-    alt: "Story timeline",
-    caption: "Timeline tab — view all scenes in sequence with attached memory points.",
-  },
-  {
-    id: "characters",
-    label: "Characters",
-    src: "/4screenshot.png",
-    alt: "Character management",
-    caption: "Full character cards — personality, biography, notes — all in one view.",
-  },
-  {
-    id: "relations",
-    label: "Relationship Map",
-    src: "/5screenshot.png",
-    alt: "Character relationship map",
-    caption: "Visual relationship map — drag & drop, color-coded by relationship type.",
-  },
-  {
-    id: "plot",
-    label: "3-Act Structure",
-    src: "/6screenshot.png",
-    alt: "Three-act structure",
-    caption: "Three-act structure — arrange plot points along the story progression.",
-  },
-  {
-    id: "wiki",
-    label: "World Wiki",
-    src: "/7screenshot.png",
-    alt: "Internal world encyclopedia",
-    caption: "Internal wiki — notes on lineages, magic systems, artifacts within your world.",
-  },
-  {
-    id: "notes",
-    label: "Notes",
-    src: "/8screenshot.png",
-    alt: "Wiki notes",
-    caption: "Free-form notes — TODOs, soundtracks, ending ideas — saved alongside your manuscript.",
-  },
-  {
-    id: "focus",
-    label: "Focus Mode",
-    src: "/9screenshot.png",
-    alt: "Full-screen focus mode",
-    caption: "Full-screen focus mode — hide everything, just your writing page.",
-  },
-  {
-    id: "insert",
-    label: "Insert Character",
-    src: "/10screenshot.png",
-    alt: "Quick character insert popup Ctrl+Space",
-    caption: "Press Ctrl + Space to open a character search popup and insert a name at the cursor position.",
-  },
+  { src: "/screenshot1.png", alt: "Screenshot 1" },
+  { src: "/screenshot2.png", alt: "Screenshot 2" },
+  { src: "/screenshot3.png", alt: "Screenshot 3" },
+  { src: "/screenshot4.png", alt: "Screenshot 4" },
+  { src: "/screenshot5.png", alt: "Screenshot 5" },
+  { src: "/screenshot6.png", alt: "Screenshot 6" },
+  { src: "/screenshot7.png", alt: "Screenshot 7" },
+  { src: "/screenshot8.png", alt: "Screenshot 8" },
+  { src: "/screenshot9.png", alt: "Screenshot 9" },
+  { src: "/screenshot10.png", alt: "Screenshot 10" },
+  { src: "/screenshot11.png", alt: "Screenshot 11" },
 ];
 
 const FEATURES = [
@@ -273,8 +216,42 @@ function Hero() {
 }
 
 function Screenshots() {
-  const [active, setActive] = useState(SCREENSHOTS[0].id);
-  const current = SCREENSHOTS.find((s) => s.id === active)!;
+  const [activeIndex, setActiveIndex] = useState(0);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const isScrolling = useRef(false);
+
+  const scrollToIndex = useCallback((index: number) => {
+    const container = scrollRef.current;
+    if (!container) return;
+    const slide = container.children[index] as HTMLElement;
+    if (!slide) return;
+    isScrolling.current = true;
+    container.scrollTo({ left: slide.offsetLeft, behavior: "smooth" });
+    setActiveIndex(index);
+    setTimeout(() => { isScrolling.current = false; }, 400);
+  }, []);
+
+  const goPrev = useCallback(() => {
+    scrollToIndex(Math.max(0, activeIndex - 1));
+  }, [activeIndex, scrollToIndex]);
+
+  const goNext = useCallback(() => {
+    scrollToIndex(Math.min(SCREENSHOTS.length - 1, activeIndex + 1));
+  }, [activeIndex, scrollToIndex]);
+
+  useEffect(() => {
+    const container = scrollRef.current;
+    if (!container) return;
+    const handleScroll = () => {
+      if (isScrolling.current) return;
+      const scrollLeft = container.scrollLeft;
+      const width = container.offsetWidth;
+      const index = Math.round(scrollLeft / width);
+      setActiveIndex(index);
+    };
+    container.addEventListener("scroll", handleScroll, { passive: true });
+    return () => container.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <section id="screenshots" className="py-24 md:py-32 bg-ink">
@@ -288,33 +265,61 @@ function Screenshots() {
           </p>
         </div>
 
-        {/* Tab buttons */}
-        <div className="mb-6 flex flex-wrap justify-center gap-2">
-          {SCREENSHOTS.map((s) => (
+        {/* Carousel */}
+        <div className="relative group">
+          {/* Prev button */}
+          <button
+            onClick={goPrev}
+            disabled={activeIndex === 0}
+            className="absolute left-3 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-11 h-11 rounded-full border border-white/15 bg-black/60 backdrop-blur-sm text-white cursor-pointer opacity-0 group-hover:opacity-100 transition-all duration-200 hover:bg-black/80 hover:border-white/25 hover:scale-105 disabled:!opacity-0 disabled:cursor-default"
+            aria-label="Previous screenshot"
+          >
+            <ChevronLeft size={24} />
+          </button>
+
+          {/* Next button */}
+          <button
+            onClick={goNext}
+            disabled={activeIndex === SCREENSHOTS.length - 1}
+            className="absolute right-3 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-11 h-11 rounded-full border border-white/15 bg-black/60 backdrop-blur-sm text-white cursor-pointer opacity-0 group-hover:opacity-100 transition-all duration-200 hover:bg-black/80 hover:border-white/25 hover:scale-105 disabled:!opacity-0 disabled:cursor-default"
+            aria-label="Next screenshot"
+          >
+            <ChevronRight size={24} />
+          </button>
+
+          {/* Slides container */}
+          <div
+            ref={scrollRef}
+            className="carousel-track flex overflow-x-auto flex-nowrap rounded-2xl border border-white/8 shadow-2xl"
+          >
+            {SCREENSHOTS.map((s, i) => (
+              <div key={i} className="carousel-slide flex-none w-full min-w-full">
+                <img
+                  src={s.src}
+                  alt={s.alt}
+                  className="w-full h-auto block"
+                  loading={i === 0 ? "eager" : "lazy"}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Dot indicators */}
+        <div className="mt-6 flex justify-center gap-2">
+          {SCREENSHOTS.map((_, i) => (
             <button
-              key={s.id}
-              onClick={() => setActive(s.id)}
-              className={`rounded-full px-4 py-2 text-sm font-medium transition-all ${active === s.id
-                ? "bg-gold text-ink"
-                : "border border-white/10 text-mist/60 hover:border-white/20 hover:text-mist"
-                }`}
-            >
-              {s.label}
-            </button>
+              key={i}
+              onClick={() => scrollToIndex(i)}
+              className={`w-2 h-2 rounded-full border-none p-0 cursor-pointer transition-all duration-200 ${
+                i === activeIndex
+                  ? "bg-gold scale-130"
+                  : "bg-white/20 hover:bg-white/40"
+              }`}
+              aria-label={`Go to screenshot ${i + 1}`}
+            />
           ))}
         </div>
-
-        {/* Screenshot image */}
-        <div className="overflow-hidden rounded-2xl border border-white/8 shadow-2xl">
-          <img
-            src={current.src}
-            alt={current.alt}
-            className="w-full h-auto transition-opacity duration-200"
-          />
-        </div>
-
-        {/* Caption */}
-        <p className="mt-5 text-center text-sm text-mist/60">{current.caption}</p>
       </div>
     </section>
   );
