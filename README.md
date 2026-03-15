@@ -23,8 +23,7 @@ Data is stored on your computer. No login required, no internet connection neede
 
 ## Links
 
-- [Buy Nastenka](https://nguyendangkin.gumroad.com/l/nastenka)
-- [GitHub](https://github.com/nguyendangkin/nastenka-novel-edit-app)
+- [Get Nastenka](https://nguyendangkin.gumroad.com/l/nastenka)
 
 ---
 

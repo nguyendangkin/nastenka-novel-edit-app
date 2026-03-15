@@ -12,12 +12,10 @@ import {
   Menu,
   X,
   Feather,
-  Github,
   Keyboard,
   Zap,
 } from "lucide-react";
 
-const GITHUB_URL = "https://github.com/nguyendangkin/nastenka-novel-edit-app";
 const GUMROAD_URL = "https://nguyendangkin.gumroad.com/l/nastenka";
 
 /* ─── DATA ─── */
@@ -181,15 +179,7 @@ function Navbar() {
               {l.label}
             </a>
           ))}
-          <a
-            href={GITHUB_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center rounded-lg p-2 text-ash transition-colors hover:text-ink"
-            aria-label="GitHub"
-          >
-            <Github size={20} strokeWidth={1.5} />
-          </a>
+
           <a
             href={GUMROAD_URL}
             target="_blank"
@@ -222,16 +212,7 @@ function Navbar() {
               {l.label}
             </a>
           ))}
-          <a
-            href={GITHUB_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => setOpen(false)}
-            className="flex items-center gap-2 py-3 text-sm text-ash transition-colors hover:text-ink"
-          >
-            <Github size={16} strokeWidth={1.5} />
-            GitHub
-          </a>
+
           <a
             href={GUMROAD_URL}
             target="_blank"
@@ -487,7 +468,7 @@ function CTAFooter() {
             Get Nastenka
           </h2>
           <p className="mx-auto mt-5 max-w-md text-base text-ash">
-            Purchase and download instantly. Available for Windows 64-bit.
+            Download instantly. Available for Windows 64-bit.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <a
@@ -497,7 +478,7 @@ function CTAFooter() {
               className="btn-gold inline-flex items-center gap-2.5 rounded-full px-8 py-4 text-sm font-semibold text-ink"
             >
               <Download size={16} />
-              Buy Now
+              Get Nastenka
             </a>
           </div>
         </div>
@@ -511,16 +492,7 @@ function CTAFooter() {
 
           <div className="flex items-center gap-6 text-sm text-ash">
             <a href="#features" className="transition-colors hover:text-ink">Features</a>
-            <a
-              href={GITHUB_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 transition-colors hover:text-ink"
-              aria-label="GitHub"
-            >
-              <Github size={16} strokeWidth={1.5} />
-              GitHub
-            </a>
+
           </div>
 
           <p className="text-xs text-mist">
