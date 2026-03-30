@@ -23,7 +23,7 @@ Data is stored on your computer. No login required, no internet connection neede
 
 ## Links
 
-- [Get Nastenka](https://nguyendangkin.gumroad.com/l/nastenka)
+- [Get Nastenka](https://your-store.gumroad.com/l/nastenka)
 
 ---
 

@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git checkout:*)",
+      "Bash(find C:UsersnguyeDesktopnastenka-landing-page -maxdepth 2 -type f -name *.env* -o -name *.config.* -o -name .env)"
+    ]
+  }
+}

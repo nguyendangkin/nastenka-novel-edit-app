@@ -18,7 +18,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 
-const GUMROAD_URL = "https://nguyendangkin.gumroad.com/l/nastenka";
+const GUMROAD_URL = "https://your-store.gumroad.com/l/nastenka";
 
 /* ─── DATA ─── */
 
